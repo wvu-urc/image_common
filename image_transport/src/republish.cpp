@@ -122,7 +122,7 @@ void Republisher::initialize()
 
     this->sub = image_transport::create_subscription(
       this, in_topic, std::bind(pub_mem_fn, &pub, std::placeholders::_1),
-      in_transport, rmw_qos_profile_default, sub_options);
+      in_transport, rmw_qos_profile_sensor_data, sub_options);
   } else {
     // Use one specific transport for output
     // Load transport plugin
@@ -142,7 +142,7 @@ void Republisher::initialize()
       this, in_topic,
       std::bind(
         pub_mem_fn,
-        instance.get(), std::placeholders::_1), in_transport, rmw_qos_profile_default, sub_options);
+        instance.get(), std::placeholders::_1), in_transport, rmw_qos_profile_sensor_data, sub_options);
   }
 }
 
